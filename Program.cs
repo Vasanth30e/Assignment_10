@@ -11,55 +11,82 @@ namespace Assignment_10
     {
         static void Main(string[] args)
         {
-            int fileOperation;
-            Console.WriteLine("Enter the Operation you wnat to perform: ");
-            Console.WriteLine("1: Create");
-            Console.WriteLine("2: Read");
-            Console.WriteLine("3: Append");
-            Console.WriteLine("4: Delete");
-            fileOperation = int.Parse(Console.ReadLine());
-
-            switch (fileOperation)
+            char choice;
+            do
             {
-                case 1:
-                    Console.WriteLine("\n---Creation---\n");
-                    Console.WriteLine("Enter the File Path");
-                    string filePath = Console.ReadLine();   
-                    Console.WriteLine("Enter the file name you want to create");
-                    string fName = Console.ReadLine();
-                    CreateFile(filePath, fName);
-                    break;
-                case 2:
-                    Console.WriteLine("\n---Read Operation---\n");
-                    Console.WriteLine("Enter the File Path");
-                    string fPathRead = Console.ReadLine();
-                    Console.WriteLine("Enter the file name you want to read");
-                    string fNameRead = Console.ReadLine();
-                    ReadFile(fPathRead, fNameRead); 
-                    break;
-                case 3:
-                    Console.WriteLine("\n---Append Operation---\n");
-                    Console.WriteLine("Enter the file path");
-                    string fpathAppend = Console.ReadLine();
-                    Console.WriteLine("Enter the file name you want to add text");
-                    string fNameAppend = Console.ReadLine();
-                    Console.WriteLine("Enter the content");
-                    string contentToAppend = Console.ReadLine();
-                    AppendToFile(fpathAppend, fNameAppend, contentToAppend);
-                    break;
-                case 4:
-                    Console.WriteLine("\n---Delete Operation---");
-                    Console.WriteLine("Enter the file path");
-                    string fpathDelete = Console.ReadLine();
-                    Console.WriteLine("Enter the file name you want to delete");
-                    string fNameDelete = Console.ReadLine();
-                    DeleteFile(fpathDelete, fNameDelete);
-                    break;
-                default:
-                    Console.WriteLine("File Operation is not exists");
-                    break;
-            }
+                int fileOperation;
 
+
+                try
+                {
+                    Console.WriteLine("Enter the Operation you wnat to perform: ");
+                    Console.WriteLine("1: Create");
+                    Console.WriteLine("2: Read");
+                    Console.WriteLine("3: Append");
+                    Console.WriteLine("4: Delete");
+                    fileOperation = int.Parse(Console.ReadLine());
+
+                    switch (fileOperation)
+                    {
+                        case 1:
+                            Console.WriteLine("\n---Creation---\n");
+                            Console.WriteLine("Enter the File Path");
+                            string filePath = Console.ReadLine();
+                            Console.WriteLine("Enter the file name you want to create");
+                            string fName = Console.ReadLine();
+                            CreateFile(filePath, fName);
+                            break;
+                        case 2:
+                            Console.WriteLine("\n---Read Operation---\n");
+                            Console.WriteLine("Enter the File Path");
+                            string fPathRead = Console.ReadLine();
+                            Console.WriteLine("Enter the file name you want to read");
+                            string fNameRead = Console.ReadLine();
+                            ReadFile(fPathRead, fNameRead);
+                            break;
+                        case 3:
+                            Console.WriteLine("\n---Append Operation---\n");
+                            Console.WriteLine("Enter the file path");
+                            string fpathAppend = Console.ReadLine();
+                            Console.WriteLine("Enter the file name you want to add text");
+                            string fNameAppend = Console.ReadLine();
+                            Console.WriteLine("Enter the content");
+                            string contentToAppend = Console.ReadLine();
+                            AppendToFile(fpathAppend, fNameAppend, contentToAppend);
+                            break;
+                        case 4:
+                            Console.WriteLine("\n---Delete Operation---");
+                            Console.WriteLine("Enter the file path");
+                            string fpathDelete = Console.ReadLine();
+                            Console.WriteLine("Enter the file name you want to delete");
+                            string fNameDelete = Console.ReadLine();
+                            DeleteFile(fpathDelete, fNameDelete);
+                            break;
+                        default:
+                            Console.WriteLine("File Operation is not exists");
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error Occured!!! " + ex.Message);
+                }
+                finally
+                {
+                    Console.WriteLine("Do you wish to continue if yes press 'y' or press any key");
+                    choice = char.Parse(Console.ReadLine());
+                    if(choice != 'y')
+                    {
+                        Console.WriteLine("Process Ends");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Process Continues");                        
+                    }
+                    
+                }
+                
+            } while (choice == 'y');
             Console.ReadKey();
 
         }        
