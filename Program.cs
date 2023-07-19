@@ -13,6 +13,10 @@ namespace Assignment_10
         {
             int fileOperation;
             Console.WriteLine("Enter the Operation you wnat to perform: ");
+            Console.WriteLine("1: Create");
+            Console.WriteLine("2: Read");
+            Console.WriteLine("3: Append");
+            Console.WriteLine("4: Delete");
             fileOperation = int.Parse(Console.ReadLine());
 
             switch (fileOperation)
